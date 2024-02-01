@@ -34,19 +34,50 @@ console.log('I am inside Submit!');
 
 
 
-   console.log('Contact Name:', contactName);
-  console.log('Relationship:', relationship);
-  console.log('Something you like in me is:', likeInMe);
-  console.log('Something you hate in me is:', hateInMe);
-  console.log('Reaction if I die:', deadReaction);
-  console.log('First impression:', firstImpression);
-  console.log('Beautiful message:', beautifulMessage);
-  console.log('Nickname:', nickname);
-  console.log('Song dedication:', songForMe);
-  console.log('Share opinion in mystatus:', shareOpinion);
+    validateInput(contactName);
+  validateInput(relationship);
+  validateInput(likeInMe);
+  validateInput(hateInMe);
+  validateInput(deadReaction);
+  validateInput(firstImpression);
+  validateInput(beautifulMessage);
+  validateInput(nickname);
+  validateInput(songForMe);
+  validateInput(shareOpinion);
+
+    function validateInput(inputElement) {
+    const inputValue = inputElement.value.trim();
+    if (inputValue === "") {
+         inputElement.style.borderBottom = "2px solid red";
+
+          const errorMessageSpan = document.createElement("span");
+      errorMessageSpan.textContent = "Error: The text is required";
+
+          inputElement.after(errorMessageSpan);
+             return;
+    }
+
+      inputElement.style.borderBottom = "";
+    const errorMessageSpan = inputElement.nextSibling;
+    if (errorMessageSpan && errorMessageSpan.tagName === "SPAN") {
+      errorMessageSpan.remove();
+    }
+  }
+    console.log('Contact Name:', contactName.value);
+  console.log('Relationship:', relationship.value);
+  console.log('Something you like in me is:', likeInMe.value);
+  console.log('Something you hate in me is:', hateInMe.value);
+  console.log('Reaction if I die:', deadReaction.value);
+  console.log('First impression:', firstImpression.value);
+  console.log('Beautiful message:', beautifulMessage.value);
+  console.log('Nickname:', nickname.value);
+  console.log('Song dedication:', songForMe.value);
+  console.log('Share opinion in mystatus:', shareOpinion.value);
 
   form.reset();
+  
 // Write your code above this line
 }
+
 
 showSlamList();
