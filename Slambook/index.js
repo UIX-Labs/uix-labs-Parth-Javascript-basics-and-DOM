@@ -34,7 +34,7 @@ console.log('I am inside Submit!');
 
 
 
-    validateInput(contactName);
+  validateInput(contactName);
   validateInput(relationship);
   validateInput(likeInMe);
   validateInput(hateInMe);
@@ -45,17 +45,24 @@ console.log('I am inside Submit!');
   validateInput(songForMe);
   validateInput(shareOpinion);
 
-    function validateInput(inputElement) {
+  function validateInput(inputElement) {
     const inputValue = inputElement.value.trim();
     if (inputValue === "") {
-         inputElement.style.borderBottom = "2px solid red";
+      inputElement.style.borderBottom = "2px solid red";
 
-          const errorMessageSpan = document.createElement("span");
+      const errorMessageSpan = document.createElement("span");
       errorMessageSpan.textContent = "Error: The text is required";
 
-          inputElement.after(errorMessageSpan);
-             return;
+      inputElement.after(errorMessageSpan);
+      return;
     }
+
+    inputElement.style.borderBottom = "";
+    const errorMessageSpan = inputElement.nextSibling;
+    if (errorMessageSpan && errorMessageSpan.tagName === "SPAN") {
+      errorMessageSpan.remove();
+    }
+  }
 
       inputElement.style.borderBottom = "";
     const errorMessageSpan = inputElement.nextSibling;
@@ -83,10 +90,36 @@ console.log('I am inside Submit!');
 
    console.log('All Slams Array:', allSlamArray);
 
+  displaySlamCards();
+
   form.reset();
   
 // Write your code above this line
-}
 
+function displaySlamCards() {
+  const allSlamsDiv = document.querySelector('.allSlams');
+  allSlamsDiv.innerHTML = "";
+  allSlamArray.forEach(slam => {
+    const cardHTML = `
+      <div class="card">
+        <p>My name in your contact is <span class="answer">${slam.contactName}</span></p>
+        <p>Relationship between us is <span class="answer">${slam.relationship}</span></p>
+        <p>Something you like in me is <span class="answer">${slam.likeInMe}</span></p>
+        <p>Something you hate in me is <span class="answer">${slam.hateInMe}</span></p>
+        <p>If I die what would be your reaction?</p>
+        <p><span class="answer">${slam.deadReaction}</span></p>
+        <p>What did you feel when you first saw me?</p>
+        <p><span class="answer">${slam.firstImpression}</span></p>
+        <p>A beautiful message for me?</p>
+        <p><span class="answer">${slam.beautifulMessage}</span></p>
+        <p>A nickname for me is <span class="answer">${slam.nickname}</span></p>
+        <p>A song you want to dedicate to me is <span class="answer">${slam.songForMe}</span></p>
+        <p>Can I share your opinion in my status?</p>
+        <p><span class="answer">${slam.shareOpinion}</span></p>
+      </div>
+    `;
+   allSlamsDiv.innerHTML += cardHTML;
+  });
+}
 
 showSlamList();
