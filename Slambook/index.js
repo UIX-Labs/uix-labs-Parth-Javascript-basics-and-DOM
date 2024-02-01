@@ -63,16 +63,25 @@ console.log('I am inside Submit!');
       errorMessageSpan.remove();
     }
   }
-    console.log('Contact Name:', contactName.value);
-  console.log('Relationship:', relationship.value);
-  console.log('Something you like in me is:', likeInMe.value);
-  console.log('Something you hate in me is:', hateInMe.value);
-  console.log('Reaction if I die:', deadReaction.value);
-  console.log('First impression:', firstImpression.value);
-  console.log('Beautiful message:', beautifulMessage.value);
-  console.log('Nickname:', nickname.value);
-  console.log('Song dedication:', songForMe.value);
-  console.log('Share opinion in mystatus:', shareOpinion.value);
+
+  formValues = {
+    contactName: contactName.value,
+    relationship: relationship.value,
+    likeInMe: likeInMe.value,
+    hateInMe: hateInMe.value,
+    deadReaction: deadReaction.value,
+    firstImpression: firstImpression.value,
+    beautifulMessage: beautifulMessage.value,
+    nickname: nickname.value,
+    songForMe: songForMe.value,
+    shareOpinion: shareOpinion.value,
+  };
+
+  console.log('Form Values:', formValues);
+
+  allSlamArray.push(formValues);
+
+   console.log('All Slams Array:', allSlamArray);
 
   form.reset();
   
